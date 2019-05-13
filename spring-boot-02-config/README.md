@@ -93,6 +93,7 @@ javaBean：实体类为cn.edu.ustc.nsrl.springboot.bean.Person
 | SpEL | 不支持 | 支持 |
 | JSR303校验 | 支持 | 不支持 |
 | 复杂类型封装（例如Map） | 支持 | 不支持 |
+
 配置文件不管是yml还是properties，只要选择了这两个的一个注解就都能被获取到值：
 - 如果说，我们只是在某个业务逻辑中需要获取一下配置文件中的某项值，则使用@Value
 - 如果说，我们专门编写了一个javaBean来和配置文件进行映射，我们就直接使用@ConfigurationProperties
