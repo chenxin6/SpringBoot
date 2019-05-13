@@ -263,7 +263,7 @@ __项目打包好以后，我们可以使用命令行参数的形式，启动项
     - 每一个自动配置类进行自动配置功能，以HttpEncodingAutoConfiguration为例
         + 它具有如下注解，各自的功能如注释所示，总的来说是根据当前不同的条件判断决定这个配置类是否生效
         ```
-        @Configuration // 表示这是一个配置类，以前编写的配置文件一样，也可以给容器中添加组件
+        @Configuration // 表示这是一个配置类，与编写的配置文件一样，也可以给容器中添加组件
         @EnableConfigurationProperties({HttpProperties.class}) // 启动指定类的ConfigurationProperties功能，将配置文件中对应的值和HttpEncodingProperties绑定起来，并把HttpProperties加入到ioc容器中
         // Spring底层@Conditional注解，如果我们满足指定的条件，整个配置类里面的配置就会生效，这个注解的条件就是判断当前应用是否是Web应用
         @ConditionalOnWebApplication(
@@ -306,6 +306,6 @@ __项目打包好以后，我们可以使用命令行参数的形式，启动项
 ## 精髓
 1. SpringBoot启动会加载大量的自动配置类并且要在一定的条件下才会生效，我们可以通过debug=true属性让控制台打印自动配置报告显示哪些自动配置类生效
 2. 我们看我们需要的功能有没有SpringBoot默认写好的自动配置类
-3. 我们再来看这个自动配置类中到底配置类哪些组件，只要我们要用的组件有，我们就不需要再来配置了
-4. 给容器中自动配置类添加组件的时候，会从properties类中获取某些属性，我们就可以在配置文件中指定这些属性的值
+3. 我们再来看这个自动配置类中到底配置了哪些组件，只要我们要用的组件有，我们就不需要再来配置了
+4. 给容器中自动配置类添加组件后，就可以从properties类中获取某些属性，并且我们可以在自定义配置文件中指定这些属性的值
 5. 通常来说xxxAutoConfiguration和xxxProperties是成对出现的，前者给容器添加组件，后者封装配置文件中的相关属性
