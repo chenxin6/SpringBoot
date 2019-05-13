@@ -1,0 +1,30 @@
+server:
+  port: 8081
+spring:
+  profiles:
+    active: dev
+# 多文档块
+---
+server:
+  port: 8084
+spring:
+  profiles: dev
+---
+server:
+  port: 8085
+spring:
+  profiles: prod
+#person:
+#  lastName: 张三
+#  age: 18
+#  boss: false
+#  Date: 2000/01/01
+#  maps: {k1: v1, k2: v2}
+#  lists:
+#    - zhangsan
+#    - lisi
+#    - wangwu
+#    - zhaoliu
+#  dog:
+#    name: xiaogou
+#    age: 2
