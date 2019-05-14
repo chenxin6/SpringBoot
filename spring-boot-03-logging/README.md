@@ -5,6 +5,7 @@
 | 日志门面（日志的抽象层） | 日志实现 |
 | ------ | ------ |
 | JCL、SLF4j、Jboss-logging | Log4j、Logj2、Logback |
+
 左边选一个门面（抽象层），右边来选一个实现。通常情况下如下选择
 - 日志门面：SLF4j
 - 日志实现：Logback
