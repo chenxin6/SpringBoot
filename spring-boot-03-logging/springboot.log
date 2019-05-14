@@ -1,0 +1,11 @@
+2019-05-14 15:17:09.379  INFO 704 --- [main] .n.s.SpringBoot03LoggingApplicationTests : Starting SpringBoot03LoggingApplicationTests on chenxindeMacBook-Pro.local with PID 704 (started by chenxin in /Users/chenxin/Documents/GitHub/SpringBoot/spring-boot-03-logging)
+2019-05-14 15:17:09.380 DEBUG 704 --- [main] .n.s.SpringBoot03LoggingApplicationTests : Running with Spring Boot v2.1.4.RELEASE, Spring v5.1.6.RELEASE
+2019-05-14 15:17:09.381  INFO 704 --- [main] .n.s.SpringBoot03LoggingApplicationTests : No active profile set, falling back to default profiles: default
+2019-05-14 15:17:10.502  INFO 704 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-14 15:17:10.765  INFO 704 --- [main] .n.s.SpringBoot03LoggingApplicationTests : Started SpringBoot03LoggingApplicationTests in 1.856 seconds (JVM running for 2.578)
+2019-05-14 15:17:10.932 TRACE 704 --- [main] .n.s.SpringBoot03LoggingApplicationTests : 这是trace日志
+2019-05-14 15:17:10.932 DEBUG 704 --- [main] .n.s.SpringBoot03LoggingApplicationTests : 这是debug日志
+2019-05-14 15:17:10.932  INFO 704 --- [main] .n.s.SpringBoot03LoggingApplicationTests : 这是info日志
+2019-05-14 15:17:10.933  WARN 704 --- [main] .n.s.SpringBoot03LoggingApplicationTests : 这是warn日志
+2019-05-14 15:17:10.933 ERROR 704 --- [main] .n.s.SpringBoot03LoggingApplicationTests : 这是error日志
+2019-05-14 15:17:10.954  INFO 704 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
