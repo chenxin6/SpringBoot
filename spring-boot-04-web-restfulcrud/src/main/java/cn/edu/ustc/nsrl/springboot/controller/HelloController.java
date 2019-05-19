@@ -23,5 +23,9 @@ public class HelloController {
         map.put("users", Arrays.asList("zhangsan", "lisi", "wangwu"));
         return "success";
     }
-
+//    这里我们使用MyMvcConfig来进行重定向
+//    @RequestMapping({"/", "/index.html"})
+//    public String index() {
+//        return "login";
+//    }
 }

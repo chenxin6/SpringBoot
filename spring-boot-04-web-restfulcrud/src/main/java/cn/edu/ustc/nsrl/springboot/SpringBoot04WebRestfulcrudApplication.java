@@ -15,6 +15,8 @@ public class SpringBoot04WebRestfulcrudApplication {
         SpringApplication.run(SpringBoot04WebRestfulcrudApplication.class, args);
     }
 
+    // 自动配置了ViewResolver（视图解析器：根据方法的返回值得到视图对象（View），视图对象决定如何渲染（转发？重定向？））
+    // 以下代码是我们自己手动给容器添加一个试图解析器
     @Bean
     public ViewResolver myViewResolver() {
         return new MyViewResolver();
