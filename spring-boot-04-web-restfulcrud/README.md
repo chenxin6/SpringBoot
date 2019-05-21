@@ -155,6 +155,14 @@ public class ThymeleafProperties {
 #### 如何修改SpringBoot的默认配置
 - SpringBoot在自动配置很多组件的时候，先看容器中有没有用户自己配置的（@Bean、@Component），如果有就用用户配置的，如果没有才自动配置，如果有些组件可以有多个（ViewResolver）则将用户配置的和自己的默认配置组合起来
 - 在SpringBoot中会有非常多的xxxConfigurer帮助我们进行扩展配置
-    
-    
+## 网页制作
+### 网页能够实现中英文切换
+1. 编写国际化配置文件，抽取页面需要显示的国际化消息（在i18n文件夹中）
+2. 使用ResourceBundleMessageSource编辑管理国际化资源文件
+3. 设置基础名
+    ```
+    # 设置基础名
+    spring.messages.basename=i18n.login
+    ```
+4. 在页面使用fmt:message取出国际化内容
     
