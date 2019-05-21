@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://getbootstrap.com/docs/4.1/examples/sign-in/ -->
+<!--导入thymeleaf-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="https://getbootstrap.com/favicon.ico" />
+
+  <title>登录页面</title>
+  <!-- Bootstrap core CSS -->
+  <!-- /webjars/**都去classpath:/META-INF/resources/webjars/找资源 -->
+  <link href="../static/assets/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <!-- /**会让其去四个静态文件夹里面搜索子目录assets然后再找css以此类推 -->
+  <link href="../static/assets/css/signin.css" th:href="@{/assets/css/signin.css}" rel="stylesheet" />
+</head>
+
+<body class="text-center">
+<form class="form-signin" action="dashboard.html">
+  <img class="mb-4" src="../static/assets/img/bootstrap-solid.svg" th:src="@{/assets/img/bootstrap-solid.svg}" alt="" width="72" height="72" />
+  <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+  <label  class="sr-only" th:text="#{login.username}">Username</label>
+  <input type="text" name="username" class="form-control" placeholder="Username" th:placeholder="#{login.username}" required="" autofocus=""/>
+  <label class="sr-only" th:text="#{login.password}">Password</label>
+  <input type="password" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required="" />
+  <div class="checkbox mb-3">
+    <label >
+      <input type="checkbox" value="remember-me" /> [[#{login.remember}]]
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.btn}">Sign in</button>
+  <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+  <!-- 由于浏览器的语言默认配置是中文，所以这里会使用中文的而不是默认的 -->
+  <!-- 如果希望下面两个按钮实现中英文切换 -->
+  <!-- 以前是?后面带参数，现在是小括号取代了?，利用这个附带的参数，我们在自己写的获取区域信息的对象也叫做区域信息解析器（component.MyLocaleResolver）中就可以进行中英文切换了 -->
+  <!-- 这里还巧妙地利用了重定向 -->
+  <a href="#" class="btn btn-sm" th:href="@{/(l='zh_CN')}">中文</a>
+  <a href="#" class="btn btn-sm" th:href="@{/(l='en_US')}">English</a>
+</form>
+</body>
+</html>
