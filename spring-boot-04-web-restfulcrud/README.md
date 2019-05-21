@@ -157,7 +157,7 @@ public class ThymeleafProperties {
 - 在SpringBoot中会有非常多的xxxConfigurer帮助我们进行扩展配置
 ## 网页制作
 ### 网页能够实现中英文切换
-1. 编写国际化配置文件，抽取页面需要显示的国际化消息（在i18n文件夹中）
+1. 编写国际化配置文件，抽取页面需要显示的国际化消息（在i18n文件夹中，有三份文件，分别针对中文、英文和默认）
 2. 使用ResourceBundleMessageSource编辑管理国际化资源文件
 3. 设置基础名
     ```
@@ -165,4 +165,60 @@ public class ThymeleafProperties {
     spring.messages.basename=i18n.login
     ```
 4. 在页面使用fmt:message取出国际化内容
+5. 由于浏览器的语言默认配置是中文，所以这里会使用中文的而不是默认的
+6. 如果希望网页中的按钮进行切换语言
+    - 查看spring-boot-autoconfigure中的WebMvcAutoConfiguration的文件内容，其中国际化Locale（区域信息的对象），LocalResolver（获取区域信息的对象）
+    ```
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnProperty(
+        prefix = "spring.mvc",
+        name = {"locale"}
+    )    
+    public LocaleResolver localeResolver() {
+        if (this.mvcProperties.getLocaleResolver() == org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties.LocaleResolver.FIXED) {
+            return new FixedLocaleResolver(this.mvcProperties.getLocale());
+        } else {
+            AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
+            localeResolver.setDefaultLocale(this.mvcProperties.getLocale());
+            return localeResolver;
+        }
+    }
+    ```
+    - 由以上代码知默认情况下是根据请求头带来的区域信息获取Locale进行国际化的
+    - 为了实现我们的功能，我们需要自己写一个获取区域信息的对象也叫做区域信息解析器（component.MyLocaleResolver）
+    - 这里我们根据访问路径中附带的参数进行判断，代码如下：
+    ```
+    /**
+     * 在连接上携带区域信息
+     * */
+    public class MyLocaleResolver implements LocaleResolver {
+        @Override
+        public Locale resolveLocale(HttpServletRequest httpServletRequest) {
+            String l = httpServletRequest.getParameter("l");
+            // 如果没有附带参数则返回默认的
+            Locale locale = Locale.getDefault();
+            if (!StringUtils.isEmpty("l")) {
+                String[] strList = l.split("_");
+                locale = new Locale(strList[0], strList[1]);
+            }
+            return locale;
+        }
+    
+        @Override
+        public void setLocale(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Locale locale) {
+    
+        }
+    }
+    ```
+    - 最后将其添加到容器中，详见config.MyMvcConfig
+    ```
+    @Bean
+    public LocaleResolver localeResolver() {
+        return new MyLocaleResolver();
+    }    
+    ```
+    - 然后在web按钮中添加超链接，详见login.html
+    
+    
     
