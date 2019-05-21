@@ -85,6 +85,8 @@ javaBean：实体类为cn.edu.ustc.nsrl.springboot.bean.Person
 ```
 ## properties文件的使用
 它的使用跟yml文件的类似，但是由于properties使用的ASCII编码，所以会出现乱码的情况，解决方法是：Preferences->Editor->File Encodings->勾选Transparent native-to-ascii conversion->OK，然后重新创建properties文件即可
+
+__注意：上面的修改只是针对一个工程的修改，为了让以后所有的工程都能有这样的配置可以File->Other Settings->Preferences for New Projects->Editor->File Encodings->勾选Transparent native-to-ascii conversion->OK__
 ## @ConfigurationProperties与@Value的区别
 |  | @ConfigurationProperties | @Value |
 | ------ | ------ | ------ |
